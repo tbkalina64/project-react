@@ -1,0 +1,109 @@
+@import '../../scss/variables';
+
+.about {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+
+    &__foto {
+        width: 100%;
+        aspect-ratio: 1/1;
+        border-radius: 2rem;
+        background: linear-gradient(45deg, transparent, #6af533, transparent);
+        display: grid;
+        place-items: center;
+
+        img {
+            border-radius: 2rem;
+            overflow: hidden;
+            transform: rotate(10deg);
+            transition: $transition;
+        }
+
+        & img:hover {
+            transform: rotate(0deg);
+        }
+    }
+
+    &__description {
+        .about__cards-wrap {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+
+            .about__card-item {
+                margin-bottom: 2rem;
+                background: $color-bg-variant;
+                border: 1px solid $color-bg-variant;
+                border-radius: 1rem;
+                padding: 2rem;
+                text-align: center;
+                cursor: pointer;
+            }
+
+            .about__card-item:hover {
+                background: transparent;
+                cursor: default;
+            }
+
+
+            & svg {
+                font-size: 2.5rem;
+                margin: 0.8rem 1.5rem;
+            }
+
+            & small {
+                font-size: 0.75rem;
+            }
+
+        }
+
+        .about__paragraph {
+            margin: 1.2rem 0;
+
+            .btn-primary {
+                margin: 2rem auto;
+                display: block;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .about {
+        grid-template-columns: 1fr;
+        gap: 0;
+        &__foto{
+            width: 50%;
+            margin: 2rem auto 4rem;
+        }
+        &__description {
+            .about__paragraph {
+                margin: 1rem 0 1.2rem;
+            }
+        }
+    }
+
+}
+
+/* -------Media queries Mobile devices ----------*/
+
+@media screen and (max-width: 600px) {
+    .about__foto{
+        width: 65%;
+        margin: 0 auto 3rem;
+    }
+
+    .about__description {
+        .about__cards-wrap {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.4rem;
+        }
+        .about__paragraph {
+            text-align: center;
+        }
+    }
+}

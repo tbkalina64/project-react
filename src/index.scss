@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Open+Sans:wght@400;500;600;700&display=swap');
+@import './scss/variables';
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  background: $color-bg;
+  color: $color-white;
+  line-height: 1.7;
+  // background-image: url(./assets/image/wing.png);
+  background-size: 400px;
+  /* height: 300px; */
+}
+
+/*--------------------General styles----------------*/
+
+.container {
+  width: $container-width-lg;
+  margin: 0 auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 2.5rem;
+  line-height: 1.5;
+}
+h5 {
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+p{
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+section {
+  margin-top: 8rem;
+  padding: 4rem 0;
+  height: 100vh;
+  background: linear-gradient(transparent, #00000050, transparent)
+}
+section>h2,
+section>h5 {
+  text-align: center;
+  color: $color-light;
+}
+
+section>h2 {
+  color:$color-primary;
+  margin-bottom: 3rem;
+}
+
+.text-light {
+  color: $color-light;
+}
+
+a {
+  color: $color-primary;
+  transition: $transition;
+}
+
+a:hover {
+  color: $color-white;
+}
+
+.btn {
+  width: max-content;
+  display: inline-block;
+  color: $color-primary;
+  padding: 0.75rem 1.2rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  border: 1solid $color-primary;
+  transition: $transition;
+}
+
+.btn:hover {
+  background: $color-white;
+  color: $color-bg;
+  border-color: transpa
+}
+
+.btn-primary {
+  background: $color-primary;
+  color: $color-bg;
+}
+
+img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* -------Media queries Tablet devices ----------*/
+
+@media screen and (max-width: 1024px) {
+  .container {
+    width: $container-width-md;
+  }
+
+  section {
+    margin-top: 6rem;
+  }
+}
+
+/* -------Media queries Mobile devices ----------*/
+
+@media screen and (max-width: 600px) {
+  .container {
+    width: $container-width-sm;
+  }
+
+  section>h2 {
+    margin-bottom: 2rem;
+  }
+}
