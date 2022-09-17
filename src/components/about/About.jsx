@@ -25,7 +25,7 @@ const About = () => {
             <article className="about__card-item">
               <CgWebsite className='about__icon' />
               <h5>Project</h5>
-              <small> 90+ Completed</small>
+              <small> 60+ Completed</small>
             </article>
             <article className="about__card-item">
               <IoMdPeople className='about__icon' />

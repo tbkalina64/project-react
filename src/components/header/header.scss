@@ -1,4 +1,5 @@
 @import '../../scss/variables';
+
 header {
     height: 100vh;
     padding-top: 7rem;
@@ -13,7 +14,9 @@ header {
 
 .header__content {
     display: flex;
-
+    h1 {
+        color: $color-white;
+    }
 }
 
 .header__left,
@@ -68,7 +71,7 @@ header {
 /* -------Media queries Tablet devices ----------*/
 
 @media screen and (max-width: 1024px) {
-    .header {
+    header {
         height: 68vh;
     }
 }
@@ -76,12 +79,33 @@ header {
 /* -------Media queries Mobile devices ----------*/
 
 @media screen and (max-width: 600px) {
-    .header {
+    header {
         height: 100vh;
     }
+
+    .header__content {
+        display: grid;
+        grid-template-columns: 1fr;
+        position: relative;
+        height: 100%;
+    }
+
+    .header__left,
+    .header__right {
+        width: 100%;
+        img{
+            position: absolute;
+            bottom: 0;
+        }
+    }
+    
+
 
     .header__socials,
     .scroll__down {
         display: none;
+    }
+    .header__link{
+        margin-bottom: 2rem;
     }
 }

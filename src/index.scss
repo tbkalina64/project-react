@@ -134,8 +134,18 @@ img {
   .container {
     width: $container-width-sm;
   }
+  section {
+    height: auto;
+    margin-top: 4rem;
 
+  }
   section>h2 {
     margin-bottom: 2rem;
+  }
+  nav {
+    padding: 0.4rem 1.2rem;
+    a {
+      font-size: 1rem;
+    }
   }
 }

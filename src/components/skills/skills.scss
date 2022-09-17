@@ -1,0 +1,40 @@
+@import '../../scss/variables';
+
+.skills {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+
+    &__left,
+    &__right {
+        background: $color-bg-variant;
+        padding: 2rem 1.5rem;
+        border-radius: 2rem;
+        border: 1px solid transparent;
+        transition: $transition;
+    }
+
+    &__left:hover,
+    &__right:hover {
+        background: transparent;
+        border-color: $color-primary;
+        cursor: default;
+    }
+
+    &__disabled {
+        width: max-content;
+    }
+    .colorWhite{
+        color: #fff;
+        font-size: 1rem;
+    }
+}
+@media screen and (max-width: 1024px) {
+    
+}
+
+@media screen and (max-width: 600px) {
+.skills {
+    grid-template-columns: 1fr;
+}
+}
