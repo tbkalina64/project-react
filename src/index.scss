@@ -116,6 +116,16 @@ img {
   object-fit: cover;
 }
 
+@media screen and (max-width: 1280px) {
+  .container {
+    width: $container-width-md;
+  }
+
+  section {
+    height: auto;
+  }
+}
+
 /* -------Media queries Tablet devices ----------*/
 
 @media screen and (max-width: 1024px) {

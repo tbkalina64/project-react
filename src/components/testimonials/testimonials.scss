@@ -1,0 +1,54 @@
+@import '../../scss/variables';
+
+.testimonials{
+width: 40%;
+&__wrap{
+background: $color-bg-variant;
+text-align: ce;
+padding: 2rem;
+border-radius: 2rem;
+user-select: none;
+
+& h5 {
+    color: $color-white;
+}
+
+    &__avatar{
+        width: 4rem;
+        aspect-ratio: 1/1;
+        overflow: hidden;
+        border-radius: 50%;
+        margin: 0 auto 1rem;
+        border: 1px solid $color-primary;
+    }
+    &__review{
+        color: $color-light;
+        font-weight: 300;
+        display: block;
+        margin: .8rem auto 0;
+        width: 80% ;
+    }
+}
+
+}
+.slider {
+    height: 160px;
+    color: #fff;
+    line-height: 160px;
+    text-align: center;
+    background: #364d79;
+}
+
+
+@media screen and (max-width: 1024px) {
+    .testimonials{
+        width: 60%;
+    }
+    
+
+}
+@media screen and (max-width: 600px) {
+    .testimonials{
+        width: $container-width-sm;
+    }
+}
