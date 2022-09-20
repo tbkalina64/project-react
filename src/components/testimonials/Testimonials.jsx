@@ -1,42 +1,45 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { Carousel } from 'antd';
 import Data from '../../Data'
+import { BsChevronLeft } from 'react-icons/bs'
+import { BsChevronRight } from 'react-icons/bs'
 import './testimonials.scss'
 
 console.log(Data);
 
 const Testimonials = () => {
-
+  const ref = useRef();
   return (
-    <>
-      {/* <Carousel effect="fade">
-       
-        {Data.map(({ item }) => 
-        ( <div className='slider testimonials__wrap' key={item.id}>
-        <img className='testimonials__avatar' src={item.url} alt="avatar" />
-            <h5 className='testimonials__name'>{item.title}</h5>
-            <p className='testimonials__review'>{item.review}</p>
-        </div>))}
-        <div className='slider'>fdgbgdbgt  2</div>
-      </Carousel> */}
-      
-    </>
+
+    <section>
+      <h5>What people talk</h5>
+      <h2>Testimonials</h2>
+      <div className="container testimonials">
+        <Carousel
+          autoplay
+          effect="fade"
+          pauseOnHover={true}
+          ref={ref}
+        >
+          {Data.map((item) =>
+          (
+            <div className='slider testimonials__wrap' key={item.id}>
+              <img className='testimonials__avatar' src={item.image} alt="avatar" />
+              <h5 className='testimonials__name'>{item.title}</h5>
+              <p className='testimonials__review'>{item.review}</p>
+            </div>
+
+          ))}
+        </Carousel>
+        <BsChevronLeft className='btnSlider prev' onClick={() => {
+          ref.current.prev();
+        }} />
+        <BsChevronRight className='btnSlider next' onClick={() => {
+          ref.current.next();
+        }} />
+
+      </div>
+    </section>
   );
 };
-
-//   return (
-//     <section id='testimonials'>
-//       <h5>Trust the professionals </h5>
-//       <h2>Testimonials</h2>
-//       <div className='container testimonials'>
-//         <article className='testimonials__wrap'>
-//             <img className='testimonials__avatar' src="" alt="avatar" />
-//             <h5 className='testimonials__name'>Marielle Haag Ximena Vegara John Paul William Doe</h5>
-//             <p className='testimonials__review'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia at placeat voluptas dignissimos maxime cum quibusdam, vero soluta porro, iste illo unde quisquam veritatis alias harum laudantium quo veniam consequatur. </p>
-//         </article>
-//       </div>
-//     </section>
-//   )
-// }
-
-export default Testimonials
+export default Testimonials;
