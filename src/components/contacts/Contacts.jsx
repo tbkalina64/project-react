@@ -1,18 +1,39 @@
-import React, { useState } from 'react'
-import { Formik, Field, Form, FormikHelpers } from 'formik'; import * as Yup from 'yup';
+import React from 'react'
+import { Formik, Form, useFormik } from 'formik'
+import * as Yup from 'yup'
 
 import { FaRegEnvelope } from 'react-icons/fa'
 import { FiLinkedin } from "react-icons/fi"
 import { BsWhatsapp } from 'react-icons/bs'
 import './contacts.scss'
 
-interface Values {
-  firstName: string;
-  message: string;
-  email: string;
-}
+const initialValues = {
+  firstName: '',
+  email: '',
+  message: ''
+};
+const onSubmit = (values) => {
+  console.log(values);
+};
+
+const validationSchema = Yup.object({
+  firstName: Yup.string()
+    .min(3, 'First name must be more than 3 characters')
+    .required('First name cannot be blank'),
+  email: Yup.string()
+    .email('Invalid email format')
+    .required('Email cannot be blank')
+})
+
 
 const Contacts = () => {
+
+  const formik = useFormik({
+    initialValues,
+    onSubmit,
+    validationSchema
+  })
+
 
   return (
     <section id='contacts'>
@@ -36,44 +57,42 @@ const Contacts = () => {
             <a href="https://wa.me/+16478943402" target="_blank">Send a Message</a>
           </article>
         </div>
-        {/* <form action="">
-          <input type="text" name="name" placeholder='Enter your Name' id="name" required />
-          <input type="email" name="email" placeholder='Enter your Email' id="email" required />
-          <textarea name="message" id="message" placeholder='Enter you Message' cols="30" rows="7"></textarea>
-          <button type="submit" className='btn btn-primary'>Send Message</button>
-        </form> */}
+
         <Formik
           initialValues={{
             firstName: '',
             email: '',
-            message: '',
+            message: ''
           }}
           onSubmit={(
-            values: Values,
-            { setSubmitting }: FormikHelpers<Values>
+            values,
+            { setSubmitting }
           ) => {
             setTimeout(() => {
               alert(JSON.stringify(values, null, 2));
               setSubmitting(false);
             }, 500);
-          }}
-        >
-          <Form className="form">
+          }}>
+
+          <Form className="form" onSubmit={formik.handleSubmit}>
+
             <label htmlFor="firstName">First Name</label>
-            <Field id="firstName" name="firstName" placeholder="John" />
+            <input id="firstName" name="firstName" placeholder="John" onChange={formik.handleChange} values={formik.values.firstName} onBlur={formik.handleBlur} />
+            {formik.touched.firstName && formik.errors.firstName ? (
+              <span className="error">{formik.errors.firstName}</span>
+            ) : null}
 
             <label htmlFor="email">Email</label>
-            <Field
-              id="email"
-              name="email"
-              placeholder="john@acme.com"
-              type="email"
-            />
+            <input id="email" name="email" placeholder="john@acme.com" type="email" onChange={formik.handleChange} values={formik.values.email} onBlur={formik.handleBlur} />
+            {formik.touched.email && formik.errors.email ? (
+              <span className="error">{formik.errors.email}</span>
+            ) : null}
 
             <label htmlFor="lastName">Message</label>
-            <Field component="textarea" value="" rows="4" placeholder="Message" />
+            <textarea placeholder="Message"></textarea>
 
-            <button type="submit">Submit</button>
+            <button className='btn btn-primary' type="submit">Submit</button>
+
           </Form>
         </Formik>
       </div>

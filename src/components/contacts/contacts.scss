@@ -38,15 +38,20 @@
     .form{
         display: flex;
         flex-direction: column;
-        gap: 1.2rem;
+        gap: 1rem;
         input, textarea{
             width: 100%;
-            padding: 1.5rem;
+            padding: 1rem;
             border-radius: .5rem;
             background: transparent;
             border: 2px solid $color-primary;
             resize: none;
             color: $color-white;
         }
+    }
+    .error{
+        color: red;
+        font-size: 0.7rem;
+        margin-top: -0.7rem;
     }
 }
