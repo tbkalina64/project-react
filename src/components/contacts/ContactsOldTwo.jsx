@@ -65,12 +65,12 @@ const Contacts = () => {
           <article className="contact options-item">
             <FiLinkedin />
             <p className='text-light'>LinkedIn</p>
-            <a href="https://www.linkedin.com/in/tatiana-loskutova/" target="_blank">Send a Message</a>
+            <a href="https://www.linkedin.com/in/tatiana-loskutova/" target="_blank" rel="noreferrer">Send a Message</a>
           </article>
           <article className="contact options-item">
             <BsWhatsapp />
             <p className='text-light'>WhatsApp</p>
-            <a href="https://wa.me/+16478943402" target="_blank">Send a Message</a>
+            <a href="https://wa.me/+16478943402" target="_blank" rel="noreferrer">Send a Message</a>
           </article>
         </div>
 

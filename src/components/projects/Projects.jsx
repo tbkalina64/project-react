@@ -50,7 +50,7 @@ export default class Projects extends Component {
               {items.map(item => (
                 <li className='item' key={item.id}>
                   <span><b>Title is:</b> {item.title}</span>  
-                  <img className='item__img' src={item.thumbnailUrl} alt="image" />
+                  <img className='item__img' src={item.thumbnailUrl} alt="item" />
                 </li>
               ))}
             </ul>

@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <footer>
       <div className="footer">
-        <a className='footer__logo' href="#"><img src={logo} alt="logo" /> </a>
+        <a className='footer__logo' href="/"><img src={logo} alt="logo" /> </a>
         <ul className='footer__menu'>
           <li><a href="#about">About Me</a></li>
           <li><a href="#skills">My Experience</a></li>
@@ -18,9 +18,9 @@ const Footer = () => {
           <li><a href="#contacts">My Contacts</a></li>
         </ul>
         <ul className='footer__social'>
-          <li><a href="https://instagram.com" target='_blank'><AiOutlineInstagram /></a></li>
-          <li><a href="https://www.facebook.com" target='_blank'><FiFacebook /></a></li>
-          <li><a href='https://www.linkedin.com/' target='_blank'><FiLinkedin /></a></li>
+          <li><a href="https://instagram.com" target='_blank' rel="noreferrer"><AiOutlineInstagram /></a></li>
+          <li><a href="https://www.facebook.com" target='_blank' rel="noreferrer"><FiFacebook /></a></li>
+          <li><a href='https://www.linkedin.com/' target='_blank' rel="noreferrer"><FiLinkedin /></a></li>
         </ul>
         
       </div>

@@ -14,15 +14,24 @@ header {
 
 .header__content {
     display: flex;
+    justify-content: center;
+    gap: 5rem;
+
     h1 {
         color: $color-white;
     }
 }
 
-.header__left,
 .header__right {
     width: 50%;
     height: 100%;
+}
+
+.header__left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .header__link {
@@ -93,19 +102,21 @@ header {
     .header__left,
     .header__right {
         width: 100%;
-        img{
+
+        img {
             position: absolute;
             bottom: 0;
         }
     }
-    
+
 
 
     .header__socials,
     .scroll__down {
         display: none;
     }
-    .header__link{
+
+    .header__link {
         margin-bottom: 2rem;
     }
 }
