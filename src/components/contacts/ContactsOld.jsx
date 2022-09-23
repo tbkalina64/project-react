@@ -1,5 +1,4 @@
-import React, { useRef } from 'react';
-import emailjs from '@emailjs/browser';
+import React from 'react'
 import { Formik, Form, useFormik } from 'formik'
 import * as Yup from 'yup'
 
@@ -8,34 +7,32 @@ import { FiLinkedin } from "react-icons/fi"
 import { BsWhatsapp } from 'react-icons/bs'
 import './contacts.scss'
 
+const initialValues = {
+  firstName: '',
+  email: '',
+  message: ''
+};
+const onSubmit = (values) => {
+  console.log(values);
+};
+
+const validationSchema = Yup.object({
+  firstName: Yup.string()
+    .min(3, 'First name must be more than 3 characters')
+    .required('First name cannot be blank'),
+  email: Yup.string()
+    .email('Invalid email format')
+    .required('Email cannot be blank')
+})
+
+
 const Contacts = () => {
+
   const formik = useFormik({
-    initialValues: {
-      firstName: '',
-      email: '',
-      message: ''
-    },
-    validationSchema: Yup.object({
-      firstName: Yup.string()
-        .min(3, 'First name must be more than 3 characters')
-        .max(15, 'Must be 15 characters or less')
-        .required('First name cannot be blank'),
-      email: Yup.string()
-        .email('Invalid email format')
-        .required('Email cannot be blank')
-    }),
-    onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
-    }
-  });
-  const form = useRef();
-
-  const sendEmail = (e) => {
-    e.preventDefault();
-
-    emailjs.sendForm('service_cr74ap6', 'template_6b8h9oo', form.current, 'FfEodpY5ZlYhPCymV');
-  };
-
+    initialValues,
+    onSubmit,
+    validationSchema
+  })
 
 
   return (
@@ -61,25 +58,41 @@ const Contacts = () => {
           </article>
         </div>
 
-        <Formik>
-          <Form className="contact-form" onSubmit={sendEmail} ref={form} >
+        <Formik
+          initialValues={{
+            firstName: '',
+            email: '',
+            message: ''
+          }}
+          onSubmit={(
+            values,
+            { setSubmitting }
+          ) => {
+            setTimeout(() => {
+              alert(JSON.stringify(values, null, 2));
+              setSubmitting(false);
+            }, 500);
+          }}>
+
+          <Form className="form" onSubmit={formik.handleSubmit}>
+
             <label htmlFor="firstName">First Name</label>
-            <input type="text" id="firstName" name='firstname'
-              {...formik.getFieldProps('firstName')}
-            />
+            <input id="firstName" name="firstName" placeholder="John" onChange={formik.handleChange} values={formik.values.firstName} onBlur={formik.handleBlur} />
             {formik.touched.firstName && formik.errors.firstName ? (
               <span className="error">{formik.errors.firstName}</span>
             ) : null}
+
             <label htmlFor="email">Email</label>
-            <input type="email" id="email" placeholder="john@acme.com" name='email'
-              {...formik.getFieldProps('email')}
-            />
+            <input id="email" name="email" placeholder="john@acme.com" type="email" onChange={formik.handleChange} values={formik.values.email} onBlur={formik.handleBlur} />
             {formik.touched.email && formik.errors.email ? (
               <span className="error">{formik.errors.email}</span>
             ) : null}
-            <label>Message</label>
-            <textarea id="message"  {...formik.getFieldProps('message')}></textarea>
+
+            <label htmlFor="lastName">Message</label>
+            <textarea placeholder="Message"></textarea>
+
             <button className='btn btn-primary' type="submit">Submit</button>
+
           </Form>
         </Formik>
       </div>
